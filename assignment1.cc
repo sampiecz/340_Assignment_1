@@ -1,3 +1,16 @@
+/***********************************************************
+ CSCI 340 - Assignment 1 - Spring 2018
+ 
+ Progammer: Sam Piecz
+ Z-ID: Z1732715
+ Section: 1
+ TA: 
+ Date Due: January 29, 2018
+ 
+ Purpose: Implement linear search and binary search on random
+ integers stored within vectors.
+ ************************************************************/
+
 #include <algorithm>
 
 const int DATA_SIZE = 200;
@@ -5,33 +18,81 @@ const int DATA_RANGE = 200;
 const int DATA_SEED = 9;
 const int SEARCH_SEED = 17;
 
-int linear_search(const vector<int>& inputVec, const int x, int& comparisons) {
+/***************************************************************
+ linear_search 
+
+ Use: Uses linear search to find integer stored within a vector. 
+
+ Parameters: Constant reference to an int vector, const integer,
+ and a reference to an int.
+
+ Returns: Position of found element, or negative one. 
+***************************************************************/
+int linear_search(const vector<int>& inputVec, const int x, int& comparisons)
+{
+    for (int comparisons = 0; comparisons < inputVec.size(), vectorIndex++)
+    {
+        if (inputVec[comparisons] == x)
+        {
+            return comparisons;
+        }
+        else
+        {
+            return -1;
+        }
+    }
 }
 
-int binary_search(const vector<int>& inputVec, const int x, int& comparisons) {
+/***************************************************************
+ binary_search 
+
+ Use: Instantiates Node object and sets it's data attributes. 
+
+ Parameters: No parameters. 
+
+ Returns: No return.
+***************************************************************/
+int binary_search(const vector<int>& inputVec, const int x, int& comparisons)
+{
 }
 
-void print_vec( const vector<int>& vec ){
+/***************************************************************
+ print_vec 
+
+ Use: Instantiates Node object and sets it's data attributes. 
+
+ Parameters: No parameters. 
+
+ Returns: No return.
+***************************************************************/
+void print_vec( const vector<int>& vec )
+{
 }
 
-void average_comparisons(const vector<int>& inputVec, const vector<int>& searchVec, int (*search)(const vector<int>&, const int, int&) ) {
+void average_comparisons(const vector<int>& inputVec, const vector<int>& searchVec, int (*search)(const vector<int>&, const int, int&) )
+{
     int i, comparison = 0, sum = 0, found = 0;
     int res = 0;
-    for (i = 0; i < (int)searchVec.size(); i++) {
+    for (i = 0; i < (int)searchVec.size(); i++)
+    {
         res = search( inputVec, searchVec[i], comparison );
         sum += comparison;
         if ( res >= 0 )
+        {
            found++;
+        }
     }
     cout << found << " numbers are found. The average number of comparisons in each search: " << (double)sum/(double)searchVec.size() << endl << endl;
 }
 
-int random_number() {
+int random_number()
+{
     return rand()%DATA_RANGE + 1;
 }
 
 
-int main () {
+int main ()
+{
 
     // -------- create unique random numbers ------------------//
     vector<int> inputVec(DATA_SIZE);
