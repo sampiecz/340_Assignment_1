@@ -37,18 +37,15 @@ const int SEARCH_SEED = 17;
 ***************************************************************/
 int linear_search(const vector<int>& inputVec, const int x, int& comparisons)
 {
-    for (int vectorIndex = 0; vectorIndex < inputVec.size(), vectorIndex++;)
+    for(size_t vectorIndex = 0; vectorIndex < inputVec.size(), vectorIndex++;)
     {
         if (inputVec[vectorIndex] == x)
         {
-            comparisons++;
             return vectorIndex;
         }
-        else
-        {
-            return -1;
-        }
+        comparisons++;
     }
+
 }
 
 /***************************************************************
@@ -77,10 +74,12 @@ int binary_search(const vector<int>& inputVec, const int x, int& comparisons)
         }
         else if(x > inputVec[mid])
         {
+            comparisons++;
             low = mid + 1;
         }
         else if(x < inputVec[mid])
         {
+            comparisons++;
             high = mid - 1;
         }
     }
@@ -100,7 +99,7 @@ int binary_search(const vector<int>& inputVec, const int x, int& comparisons)
 ***************************************************************/
 void print_vec( const vector<int>& vec )
 {
-    for (int itemInVector = 0; itemInVector < vec.size(); itemInVector++)
+    for (size_t itemInVector = 0; itemInVector < vec.size(); itemInVector++)
     {
         cout << vec[itemInVector];
     }
