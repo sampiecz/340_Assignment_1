@@ -12,6 +12,13 @@
  ************************************************************/
 
 #include <algorithm>
+#include <iostream>
+#include <vector>
+
+using std::cout;
+using std::endl;
+using std::random_shuffle;
+using std::vector;
 
 const int DATA_SIZE = 200;
 const int DATA_RANGE = 200;
@@ -30,11 +37,12 @@ const int SEARCH_SEED = 17;
 ***************************************************************/
 int linear_search(const vector<int>& inputVec, const int x, int& comparisons)
 {
-    for (int comparisons = 0; comparisons < inputVec.size(), vectorIndex++)
+    for (int vectorIndex = 0; vectorIndex < inputVec.size(), vectorIndex++;)
     {
-        if (inputVec[comparisons] == x)
+        if (inputVec[vectorIndex] == x)
         {
-            return comparisons;
+            comparisons++;
+            return vectorIndex;
         }
         else
         {
@@ -46,27 +54,56 @@ int linear_search(const vector<int>& inputVec, const int x, int& comparisons)
 /***************************************************************
  binary_search 
 
- Use: Instantiates Node object and sets it's data attributes. 
+ Use: 
 
- Parameters: No parameters. 
+ Parameters:  
 
- Returns: No return.
+ Returns: 
 ***************************************************************/
 int binary_search(const vector<int>& inputVec, const int x, int& comparisons)
 {
+    int low, mid, high;
+
+    low = 0;
+    high = inputVec.size() -1;
+
+    while (low < high)
+    {
+        mid = (low + high) / 2;
+
+        if(inputVec[mid] == x)
+        {
+            return mid;
+        }
+        else if(x > inputVec[mid])
+        {
+            low = mid + 1;
+        }
+        else if(x < inputVec[mid])
+        {
+            high = mid - 1;
+        }
+    }
+
+    return -1;
+
 }
 
 /***************************************************************
  print_vec 
 
- Use: Instantiates Node object and sets it's data attributes. 
+ Use: 
 
- Parameters: No parameters. 
+ Parameters: 
 
- Returns: No return.
+ Returns: 
 ***************************************************************/
 void print_vec( const vector<int>& vec )
 {
+    for (int itemInVector = 0; itemInVector < vec.size(); itemInVector++)
+    {
+        cout << vec[itemInVector];
+    }
 }
 
 void average_comparisons(const vector<int>& inputVec, const vector<int>& searchVec, int (*search)(const vector<int>&, const int, int&) )
