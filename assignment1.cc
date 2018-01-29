@@ -37,12 +37,12 @@ const int SEARCH_SEED = 17;
 ***************************************************************/
 int linear_search(const vector<int>& inputVec, const int x, int& comparisons)
 {
-    unsigned int i;
-    for(i=0; i<inputVec.size(); i++)
+    unsigned int vectorIndex;
+    for(vectorIndex = 0; vectorIndex < inputVec.size(); vectorIndex++)
     {
-        if(inputVec[i] == x)
+        if(inputVec[vectorIndex] == x)
         {
-            return i;
+            return vectorIndex;
         }
         comparisons++;
     }
