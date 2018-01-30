@@ -14,11 +14,13 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
+#include <iomanip>
 
 using std::cout;
 using std::endl;
 using std::random_shuffle;
 using std::vector;
+using std::setw;
 
 const int DATA_SIZE = 200;
 const int DATA_RANGE = 200;
@@ -37,14 +39,14 @@ const int SEARCH_SEED = 17;
 ***************************************************************/
 int linear_search(const vector<int>& inputVec, const int x, int& comparisons)
 {
-    unsigned int vectorIndex;
-    for(vectorIndex = 0; vectorIndex < inputVec.size(); vectorIndex++)
+    comparisons = 0;
+    for(size_t vectorIndex = 0; vectorIndex < inputVec.size(); vectorIndex++)
     {
+        comparisons++;
         if(inputVec[vectorIndex] == x)
         {
             return vectorIndex;
         }
-        comparisons++;
     }
     return -1;
 }
@@ -61,16 +63,14 @@ int linear_search(const vector<int>& inputVec, const int x, int& comparisons)
 int binary_search(const vector<int>& inputVec, const int x, int& comparisons)
 {
     int low, mid, high;
-
     low = 0;
     high = inputVec.size() -1;
-
     while (low < high)
     {
         mid = (low + high) / 2;
-
         if(inputVec[mid] == x)
         {
+            comparisons++;
             return mid;
         }
         else if(x > inputVec[mid])
@@ -78,15 +78,13 @@ int binary_search(const vector<int>& inputVec, const int x, int& comparisons)
             comparisons++;
             low = mid + 1;
         }
-        else if(x < inputVec[mid])
+        else
         {
             comparisons++;
             high = mid - 1;
         }
     }
-
     return -1;
-
 }
 
 /***************************************************************
@@ -100,9 +98,16 @@ int binary_search(const vector<int>& inputVec, const int x, int& comparisons)
 ***************************************************************/
 void print_vec( const vector<int>& vec )
 {
-    for (size_t itemInVector = 0; itemInVector < vec.size(); itemInVector++)
+    const int ITEM_W = 4;
+    const int NO_ITEMS = 8;
+    vector<int>::const_iterator it;
+    for (it = vec.begin(); it != vec.end(); it++)
     {
-        cout << vec[itemInVector];
+        cout << setw(ITEM_W) << *it;
+        if ((it - vec.begin()) % NO_ITEMS == 7)
+        {
+            cout << endl;
+        }
     }
 }
 
