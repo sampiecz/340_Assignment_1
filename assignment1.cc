@@ -54,11 +54,15 @@ int linear_search(const vector<int>& inputVec, const int x, int& comparisons)
 /***************************************************************
  binary_search 
 
- Use: 
+ Use: Takes far less time to find integer stored within vector.
+ This function shows the amount of comparisons it takes when
+ searching. 
 
- Parameters:  
+ Parameters: A reference to a constant int vector, a constant
+ int, and a reference to an int.
 
- Returns: 
+ Returns: The index of where the number has been found.
+ Otherwise it returns negative one.
 ***************************************************************/
 int binary_search(const vector<int>& inputVec, const int x, int& comparisons)
 {
@@ -90,11 +94,11 @@ int binary_search(const vector<int>& inputVec, const int x, int& comparisons)
 /***************************************************************
  print_vec 
 
- Use: 
+ Use: Prints all items within a vector. 
 
- Parameters: 
+ Parameters: A constant vector of type int. 
 
- Returns: 
+ Returns: Nothing. Just prints items in vector. 
 ***************************************************************/
 void print_vec( const vector<int>& vec )
 {
